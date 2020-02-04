@@ -6,8 +6,8 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 
 import { auth } from '../../firebase/firebase.utils';
 
-import CartIcon from '../cartIcon/CartIcon';
-import CardDropdown from '../cartDropdown/CartDropdown';
+import CartIcon from '../cart-icon/CartIcon';
+import CardDropdown from '../cart-dropdown/CartDropdown';
 import './Header.scss';
 
 const Header = ({ currentUser, hidden }) => (
