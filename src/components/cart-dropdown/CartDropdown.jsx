@@ -1,41 +1,41 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
+import React from 'react'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import { withRouter } from 'react-router-dom'
 
-import CustomButton from '../custom-button/CustomButton';
-import CartItem from '../cart-item/CartItem';
-import { selectCartItems } from '../../redux/cart/cartSelectors';
-import { toggleCartHidden } from '../../redux/cart/cartActions';
+import CustomButton from '../custom-button/CustomButton'
+import CartItem from '../cart-item/CartItem'
+import { selectCartItems } from '../../redux/cart/cartSelectors'
+import { toggleCartHidden } from '../../redux/cart/cartActions'
 
-import './CartDropdown.scss';
+import './CartDropdown.scss'
 
 const CartDropdown = ({ cartItems, history, dispatch }) => (
-  <div className="cart-dropdown">
-    <div className="cart-items">
-      {cartItems.length ? (
-        cartItems.map(cartItem => (
-          <CartItem key={cartItem.id} item={cartItem} />
-        ))
-      ) : (
-        <span className="empty-message">Your cart is empty</span>
-      )}
-    </div>
-    <CustomButton
-      onClick={() => {
-        history.push('/checkout');
-        dispatch(toggleCartHidden());
-      }}
-    >
-      GO TO CHECKOUT
-    </CustomButton>
-  </div>
-);
+	<div className='cart-dropdown'>
+		<div className='cart-items'>
+			{cartItems.length ? (
+				cartItems.map((cartItem) => (
+					<CartItem key={cartItem.id} item={cartItem} />
+				))
+			) : (
+				<span className='empty-message'>Your cart is empty</span>
+			)}
+		</div>
+		<CustomButton
+			onClick={() => {
+				history.push('/checkout')
+				dispatch(toggleCartHidden())
+			}}
+		>
+			GO TO CHECKOUT
+		</CustomButton>
+	</div>
+)
 
 // Using createStructuredSelector, so we don't need passing state, it will automatically passing it.
 
 const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems
-});
+	cartItems: selectCartItems,
+})
 
-export default withRouter(connect(mapStateToProps)(CartDropdown));
+export default withRouter(connect(mapStateToProps)(CartDropdown))
